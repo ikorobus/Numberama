@@ -165,7 +165,8 @@ namespace Numberama
                     }
                     return;
                 case 'g':
-                    Genera(nums, ref cont, MODO); return;
+                    Genera(nums, ref cont, MODO); 
+                    return;
                 case 'q':
                     return;
                 default:
