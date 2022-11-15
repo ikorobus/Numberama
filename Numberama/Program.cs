@@ -1,7 +1,6 @@
 ﻿// Cynthia Tristán Álvarez
 // María Solórzano Gómez
 using System;
-using System.Globalization;
 using System.Threading;
 
 namespace Numberama
@@ -10,9 +9,9 @@ namespace Numberama
     {
         // Constantes
         const int MAX_NUM = 400, // número máximo de eltos en la secuencia    
-                  MODO = 18, // modo de juego (cant)
+                  MODO = 1, // modo de juego (cant)
                   ANCHO = 9; // cantidad de columnas / anchura de filas
-        const bool DEBUG = false;
+        const bool DEBUG = true;
 
         // Método Main
         static void Main(string[] args)
@@ -26,7 +25,7 @@ namespace Numberama
             Console.CursorVisible = false;
 
             Genera(nums, ref cont, MODO);
-
+            
             Render(nums, cont, act, sel);
 
             while (!Terminado(nums, cont))
@@ -63,7 +62,7 @@ namespace Numberama
                         Console.BackgroundColor = ConsoleColor.DarkYellow;
                     else
                         Console.BackgroundColor = ConsoleColor.Gray;
-                    Console.Write(" ");
+                    Console.Write("  ");
                 }
                 else
                 {
@@ -73,7 +72,7 @@ namespace Numberama
                         Console.BackgroundColor = ConsoleColor.DarkGreen;
                     else
                         Console.BackgroundColor = ConsoleColor.Black;
-                    Console.Write(nums[i]);
+                    Console.Write(" " + nums[i]);
                 }
 
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -91,14 +90,12 @@ namespace Numberama
             {
                 for (int i = 1; i <= cant; i++)
                 {
-                    if (i < 10) // Menores de 10 o sus múltiplos
+                    if (i < 10) // Menores de 10 
                     {
                         nums[cont] = i;
                         cont++;
                     }
-                    else if (i % 10 == 0) // Múltiplos de 10
-                        continue;
-                    else if (i > 10) // Mayores de 10 o sus múltiplos
+                    else if (i > 10 && !(i % 10 == 0)) // Mayores de 10 y no son múltiplos
                     {
                         nums[cont] = i / 10;
                         cont++;
@@ -158,6 +155,9 @@ namespace Numberama
                         {
                             nums[act] = 0;
                             nums[sel] = 0;
+                            LimpiaFilas(nums, ref cont, ref act);
+                            if (sel < cont)
+                                LimpiaFilas(nums, ref cont, ref sel);
                             sel = -1;
                         }
                         else 
@@ -232,9 +232,30 @@ namespace Numberama
 
         // Extensiones opcionales: LimpiaFila(nums,cont,pos), Pista, Deshacer jugadas.
 
-        static void LimpiaFila(int[] nums, int cont, int pos)
+        static void LimpiaFilas(int[] nums, ref int cont, ref int pos)
         {
-            
+            int linea = pos - (pos % ANCHO),
+                i = linea;
+
+            if (i + 9 < MAX_NUM)
+                while (nums[i] == 0 && i < linea + ANCHO)
+                    i++;
+            else
+                while (nums[i] == 0 && i < MAX_NUM - 1)
+                    i++;
+
+            if (i == linea + ANCHO || i == MAX_NUM - 1)
+            {
+                for (int j = linea; j < cont; j++)
+                {
+                    if (j + ANCHO >= MAX_NUM)
+                        nums[j] = 0;
+                    else
+                        nums[j] = nums[j + ANCHO];
+                }
+                cont -= Math.Min(ANCHO, MAX_NUM - linea);
+                pos -= ANCHO;
+            }
         }
     }
 }

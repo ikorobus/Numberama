@@ -22,3 +22,11 @@ C:\Users\pelus\Downloads\FP P2 Numberama v0\Numberama\Numberama\obj\Debug\Number
 C:\Users\pelus\Downloads\FP P2 Numberama v0\Numberama\Numberama\obj\Debug\Numberama.csproj.CoreCompileInputs.cache
 C:\Users\pelus\Downloads\FP P2 Numberama v0\Numberama\Numberama\obj\Debug\Numberama.exe
 C:\Users\pelus\Downloads\FP P2 Numberama v0\Numberama\Numberama\obj\Debug\Numberama.pdb
+U:\hlocal\FP P2 Numberama v1.3\Numberama\Numberama\bin\Debug\Numberama.exe.config
+U:\hlocal\FP P2 Numberama v1.3\Numberama\Numberama\bin\Debug\Numberama.exe
+U:\hlocal\FP P2 Numberama v1.3\Numberama\Numberama\bin\Debug\Numberama.pdb
+U:\hlocal\FP P2 Numberama v1.3\Numberama\Numberama\obj\Debug\Numberama.csproj.AssemblyReference.cache
+U:\hlocal\FP P2 Numberama v1.3\Numberama\Numberama\obj\Debug\Numberama.csproj.SuggestedBindingRedirects.cache
+U:\hlocal\FP P2 Numberama v1.3\Numberama\Numberama\obj\Debug\Numberama.csproj.CoreCompileInputs.cache
+U:\hlocal\FP P2 Numberama v1.3\Numberama\Numberama\obj\Debug\Numberama.exe
+U:\hlocal\FP P2 Numberama v1.3\Numberama\Numberama\obj\Debug\Numberama.pdb
