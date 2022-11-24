@@ -19,12 +19,12 @@ namespace Numberama
             // Variables
             int[] nums = new int[MAX_NUM];
             int cont = 0, // número de dígitos de la secuencia = primera posición libre en la secuencia
-                act = MAX_NUM - 1, // posición del cursor en la secuencia
+                act = 0, // posición del cursor en la secuencia
                 sel = -1; // posición de la casilla seleccionada; -1 si no hay selección
 
             Console.CursorVisible = false;
 
-            while (cont < MAX_NUM)
+            while (cont < 25)
             Genera(nums, ref cont, MODO);
             
             Render(nums, cont, act, sel);
@@ -157,8 +157,9 @@ namespace Numberama
                         {
                             nums[act] = 0;
                             nums[sel] = 0;
-                            LimpiaFilas(nums, ref cont, ref sel);
+                            int selec = sel;
                             LimpiaFilas(nums, ref cont, ref act);
+                            LimpiaFilas(nums, ref cont, ref selec);
                             sel = -1;
                         }
                         else 
@@ -256,6 +257,10 @@ namespace Numberama
                 }
                 cont -= Math.Min(ANCHO, cont - linea);
                 pos -= ANCHO;
+                if (pos >= cont)
+                    pos = cont - 1;
+                else if (pos < 0)
+                    pos = 0;
             }
         }
     }
